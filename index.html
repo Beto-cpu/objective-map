@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xml: lang>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio de Correo</title>
+
+    <link rel="icon" type="image/png" href="/images/icono.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="cont-header">
+            <div class="bar">
+                <a href="/"><img src="/images/icono.png" alt="Logo"></a>
+                <nav class="nav" aria-label="">
+                    <a href="index.html">Calculadora de Envios</a>
+                    <a href="sign_up.html">Registrarse</a>
+                    <a href="log_in.html">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="contenedor">
+            <h1 class="center-text">Calculadora de entregas</h1>
+
+            <form class="form" action="">
+                <div>
+                    <div>
+                        <label for="">Se envía desde: </label>
+                        <select id="start">
+                            <option value="0">Apizolaya, Zacatecas</option>
+                            <option value="1">Campeche, Campeche</option>
+                            <option value="2">CD. Mexico</option>
+                            <option value="3">Ciudad Victoria, Tamaulipas</option>
+                            <option value="4">Ensenada, B.C.</option>
+                            <option value="5">Guadalajara, Jalisco</option>
+                            <option value="6">Guanajuato, Guanajuato</option>
+                            <option value="7">La Babia, Coahuila</option>
+                            <option value="8">Los mochis, Sinaloa</option>
+                            <option value="9">Mexicali, B.C.</option>
+                            <option value="10">Morelia, Michoacan</option>
+                            <option value="11">Mulege, B.C.S.</option>
+                            <option value="12">Nogales, Sonora</option>
+                            <option value="13">Parritas, Chihuahua</option>
+                            <option value="14">Puerto Vallarta, Jalisco</option>
+                            <option value="15">Oaxaca, Oaxaca</option>
+                            <option value="16">Tepic, Nayarit</option>
+                            <option value="17">Tuxtla Guitierrez, Chiapas</option>
+                            <option value="18">Zihuatanejo, Guerrero</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="">Se envía hacia: </label>
+                        <select id="end">
+                            <option value="0">Apizolaya, Zacatecas</option>
+                            <option value="1">Campeche, Campeche</option>
+                            <option value="2">CD. Mexico</option>
+                            <option value="3">Ciudad Victoria, Tamaulipas</option>
+                            <option value="4">Ensenada, B.C.</option>
+                            <option value="5">Guadalajara, Jalisco</option>
+                            <option value="6">Guanajuato, Guanajuato</option>
+                            <option value="7">La Babia, Coahuila</option>
+                            <option value="8">Los mochis, Sinaloa</option>
+                            <option value="9">Mexicali, B.C.</option>
+                            <option value="10">Morelia, Michoacan</option>
+                            <option value="11">Mulege, B.C.S.</option>
+                            <option value="12">Nogales, Sonora</option>
+                            <option value="13">Parritas, Chihuahua</option>
+                            <option value="14">Puerto Vallarta, Jalisco</option>
+                            <option value="15">Oaxaca, Oaxaca</option>
+                            <option value="16">Tepic, Nayarit</option>
+                            <option value="17">Tuxtla Guitierrez, Chiapas</option>
+                            <option value="18">Zihuatanejo, Guerrero</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="select">Tipo de Membresía: </label>
+                        <select id="select">
+                            <option value="0">Regular</option>
+                            <option value="1">Prime</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="boton" onclick="showBestPaths()"> Calcular</p>
+            </form>
+
+            <div id="path-cont">
+                <div>
+                    <p>El camino mas rápido es: </p>
+                    <p id="fastest-path"></p>
+                    <p id="time-path"></p>
+                </div>
+
+                <div>
+                    <p>El camino mas barato es: </p>
+                    <p id="cheapest-path"></p>
+                    <p id="cost-path"></p>
+                </div>
+            </div>
+
+            <img src="/images/mexico-map-vector.jpg" alt="mapa sucursales">
+
+            <table id="shipping-table">
+                <tr>
+                    <th>Desde: </th>
+                    <th>Hasta: </th>
+                    <th>Precio:</th>
+                    <th>Tiempo:</th>
+                    <th>Precio Prime:</th>
+                    <th>Tiempo Prime:</th>
+                </tr>
+            </table>
+
+            <script src="/js/classes.js"></script>
+            <script src="/js/path-calculator.js"></script>
+            <script>
+                let table = document.getElementById("shipping-table");
+                for (let connection of graph) {
+                    for (let city of connection[1]) {
+                        var row = table.insertRow();
+                        var from = row.insertCell();
+                        var to = row.insertCell();
+                        var price = row.insertCell();
+                        var time = row.insertCell();
+                        var pricePrieme = row.insertCell();
+                        var timePrime = row.insertCell();
+                        from.innerHTML = `${locations[connection[0]]}`;
+                        to.innerHTML = `${locations[city.cityConnection]}`;
+                        price.innerHTML = `$${city.price}`;
+                        time.innerHTML = `${city.time} días`;
+                        pricePrieme.innerHTML = `$${Math.round(city.price*0.8)}`;
+                        timePrime.innerHTML = `${city.time - 2} días`;
+                    }
+                }
+
+                function showBestPaths() {
+                    let start = parseInt(document.getElementById('start').value);
+                    let end = parseInt(document.getElementById('end').value);
+                    let prime = document.getElementById('select').value == 1;
+
+                    let time = pathToText(dijsktra(start, end, 'time', prime));
+                    let price = pathToText(dijsktra(start, end, 'price', prime));
+
+                    document.getElementById('path-cont').style.display = 'unset';
+
+                    document.getElementById('fastest-path').innerHTML = time[0];
+                    document.getElementById('time-path').innerHTML = time[1];
+
+                    document.getElementById('cheapest-path').innerHTML = price[0];
+                    document.getElementById('cost-path').innerHTML = price[1];
+                }
+            </script>
+        </div>
+    </main>
+
+
+    <footer class="cont-footer">
+        <p>©Beto Munguia</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,304 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    /*Reset para REMS*/
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.6rem;
+    line-height: 2;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+/*Globales*/
+
+img {
+    max-width: 100%;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 120rem;
+    margin: 3rem auto;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.4rem;
+    margin: 0 3.5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+h4 {
+    font-size: 2.6rem;
+}
+
+p::selection {
+    background: green;
+    color: white;
+}
+
+::selection {
+    background: green;
+    color: white;
+}
+
+
+/*Utilidades*/
+
+.seccion {
+    margin-top: 2rem;
+    margin-bottom: 2 rem;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.d-block {
+    display: block!important;
+}
+
+.contenido-centrado {
+    max-width: 80rem;
+}
+
+.boton {
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.8rem;
+    padding: 1rem 3rem;
+    margin: 3rem 0;
+    text-align: center;
+    border: none;
+    border-radius: 1rem;
+    background-color: #99d9ea;
+}
+
+.boton:hover {
+    cursor: pointer;
+    color: #ffffff;
+    -webkit-text-stroke: 1px black;
+}
+
+
+/* header */
+
+.cont-header {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cont-header h1 {
+    color: #ffffff;
+    padding-bottom: 2rem;
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+.bar {
+    background-color: #202020;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #e0e0e0;
+}
+
+.bar img {
+    height: 1.8rem;
+    margin-left: 3rem;
+}
+
+.bar.secondary img {
+    height: 5rem;
+    margin: 1rem 0 1rem 3rem;
+}
+
+.nav {
+    background-color: #202020;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 3.5rem;
+}
+
+.nav a:first-of-type {
+    margin-left: auto;
+}
+
+.nav a:hover {
+    color: #71b100;
+}
+
+
+/* footer */
+
+.cont-footer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: #202020;
+}
+
+.fix-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.cont-footer p {
+    color: white;
+    margin: 0;
+}
+
+
+/* Tabla */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+/*Paths*/
+
+#path-cont {
+    display: none;
+}
+
+#path-cont div:not(:first-of-type) {
+    margin-top: 2rem;
+}
+
+#path-cont div p {
+    margin: 0;
+}
+
+
+/*Forms*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form input {
+    margin-top: 2rem;
+}
+
+
+/*Login-signup form*/
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.register-form div {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    width: 50%;
+    margin: 1rem auto;
+}
+
+.register-form .boton {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*New Shiping*/
+
+.new-ship-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+.new-ship-form div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.new-ship-form input {
+    margin-top: 2rem;
+    margin: auto;
+}
+
+#select-ship-option {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+}
+
+#select-ship-option div {
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: 1fr 25fr;
+    width: 70%;
+}
+
+#select-ship-option div p {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#select-ship-option div input {
+    text-align: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: right;
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi pagina</title>
+
+    <link rel="icon" type="image/png" href="/images/icono.png" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="cont-header">
+            <div class="bar">
+                <a href="/"><img src="/images/icono.png" alt="Logo"></a>
+                <nav class="nav" aria-label="">
+                    <a href="index.html">Salir</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="contenedor center-text">
+        <h2 id="greeting">¡Hola!</h2>
+        <div>
+            <p id="membership">Membresia: Regular</p>
+            <input id="change-membership" class="boton" type="button" value="Cambiar a Prime" onclick="changeMembership()">
+        </div>
+        <div>
+            <h3>Proximo Envio</h3>
+            <table id="shipping-table">
+                <tr>
+                    <th>Nombre: </th>
+                    <th>Desde: </th>
+                    <th>Hasta: </th>
+                    <th>Precio:</th>
+                    <th>Tiempo:</th>
+                    <th>Tipo:</th>
+                </tr>
+            </table>
+        </div>
+        <div id="new-ship-cont">
+            <h3>Agregar envio.</h3>
+            <form class="new-ship-form" action="">
+                <div>
+                    <div>
+                        <label for="select">Nombre del envío: </label>
+                        <input type="text" id="name">
+                    </div>
+
+                    <div>
+                        <label for="start">Se envía desde: </label>
+                        <select id="start">
+                            <option value="0">Apizolaya, Zacatecas</option>
+                            <option value="1">Campeche, Campeche</option>
+                            <option value="2">CD. Mexico</option>
+                            <option value="3">Ciudad Victoria, Tamaulipas</option>
+                            <option value="4">Ensenada, B.C.</option>
+                            <option value="5">Guadalajara, Jalisco</option>
+                            <option value="6">Guanajuato, Guanajuato</option>
+                            <option value="7">La Babia, Coahuila</option>
+                            <option value="8">Los mochis, Sinaloa</option>
+                            <option value="9">Mexicali, B.C.</option>
+                            <option value="10">Morelia, Michoacan</option>
+                            <option value="11">Mulege, B.C.S.</option>
+                            <option value="12">Nogales, Sonora</option>
+                            <option value="13">Parritas, Chihuahua</option>
+                            <option value="14">Puerto Vallarta, Jalisco</option>
+                            <option value="15">Oaxaca, Oaxaca</option>
+                            <option value="16">Tepic, Nayarit</option>
+                            <option value="17">Tuxtla Guitierrez, Chiapas</option>
+                            <option value="18">Zihuatanejo, Guerrero</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="end">Se envía hacia: </label>
+                        <select id="end">
+                            <option value="0">Apizolaya, Zacatecas</option>
+                            <option value="1">Campeche, Campeche</option>
+                            <option value="2">CD. Mexico</option>
+                            <option value="3">Ciudad Victoria, Tamaulipas</option>
+                            <option value="4">Ensenada, B.C.</option>
+                            <option value="5">Guadalajara, Jalisco</option>
+                            <option value="6">Guanajuato, Guanajuato</option>
+                            <option value="7">La Babia, Coahuila</option>
+                            <option value="8">Los mochis, Sinaloa</option>
+                            <option value="9">Mexicali, B.C.</option>
+                            <option value="10">Morelia, Michoacan</option>
+                            <option value="11">Mulege, B.C.S.</option>
+                            <option value="12">Nogales, Sonora</option>
+                            <option value="13">Parritas, Chihuahua</option>
+                            <option value="14">Puerto Vallarta, Jalisco</option>
+                            <option value="15">Oaxaca, Oaxaca</option>
+                            <option value="16">Tepic, Nayarit</option>
+                            <option value="17">Tuxtla Guitierrez, Chiapas</option>
+                            <option value="18">Zihuatanejo, Guerrero</option>
+                        </select>
+                    </div>
+
+
+                </div>
+
+            </form>
+            <input class="boton" type="button" value="Calcular" onclick="showBestPaths()">
+
+
+            <div id="select-ship-option">
+                <h3>Selecciona una opción</h3>
+                <div>
+                    <input type="radio" name="transporte2" value="1" id="price-option">
+                    <p id="path-price">B - E - T - 0</p>
+                </div>
+                <div>
+                    <input type="radio" name="transporte2" value="2" id="time-option" checked>
+                    <p id="path-time">B - E - T - 0</p>
+                </div>
+
+                <input class="boton" type="button" value="Agregar" onclick="addPackage()">
+            </div>
+
+            <p>.</p>
+
+        </div>
+    </div>
+
+    <footer class="cont-footer fix-footer">
+        <p>©Beto Munguia</p>
+    </footer>
+
+    <script src="/js/classes.js"></script>
+    <script src="/js/path-calculator.js"></script>
+    <script src="/js/user_page.js"></script>
+    <script>
+        function updateTable() {
+            let table = document.getElementById("shipping-table");
+            table.innerHTML = `
+                <tr>
+                    <th>Nombre: </th>
+                    <th>Desde: </th>
+                    <th>Hasta: </th>
+                    <th>Precio:</th>
+                    <th>Tiempo:</th>
+                    <th>Tipo:</th>
+                </tr>
+                `;
+            updateGlobal();
+
+            if (queue.length > 0) {
+                for (let item of queue) {
+                    var row = table.insertRow();
+                    let package = item.value;
+
+                    let packageName = row.insertCell();
+                    let from = row.insertCell();
+                    let to = row.insertCell();
+                    let price = row.insertCell();
+                    let time = row.insertCell();
+                    let type = row.insertCell();
+
+                    packageName.innerHTML = package.name;
+                    from.innerHTML = locations[package.from];
+                    to.innerHTML = locations[package.to];
+                    price.innerHTML = `$${package.price}`;
+                    time.innerHTML = `${package.time} días`;
+                    type.innerHTML = package.prime ? 'Prime' : 'Regular';
+                }
+            }
+
+
+        }
+
+        function updateMessages() {
+            document.getElementById('greeting').innerHTML = `¡Hola, ${actualUser.name}!`;
+
+            if (actualUser.admin) {
+                document.getElementById('membership').innerHTML = 'Administrador';
+                document.getElementById('new-ship-cont').innerHTML = `
+            <input class="boton" type="button" value="Enviar" onclick="sentPackage()">
+            `;
+                document.getElementById('change-membership').style.display = 'none';
+            } else {
+                document.getElementById('membership').innerHTML = actualUser.prime ? 'Membresía: Prime' : 'Membresía: Regular';
+                document.getElementById('change-membership').value = actualUser.prime ? 'Desuscribirse a Prime' : 'Suscribirse a Prime';
+            }
+        }
+
+        function updateGlobal() {
+            if (actualUser.admin) {
+                sessionStorage.generalQueue = JSON.stringify(queue);
+            } else {
+                sessionStorage.generalQueue = JSON.stringify(generalQueue);
+            }
+            sessionStorage.users = JSON.stringify(users);
+
+        }
+
+        function showBestPaths() {
+            let start = parseInt(document.getElementById('start').value);
+            let end = parseInt(document.getElementById('end').value);
+            let prime = actualUser.prime;
+
+            let time = pathToText(dijsktra(start, end, 'time', prime));
+            let price = pathToText(dijsktra(start, end, 'price', prime));
+
+            document.getElementById('select-ship-option').style.display = 'flex';
+
+            document.getElementById('path-price').innerHTML = `Ruta: ${time[0]}.    ${time[1]}`;
+
+            document.getElementById('path-time').innerHTML = `Ruta: ${price[0]}.    ${price[1]}`;
+        }
+
+
+        let users = JSON.parse(sessionStorage.users);
+        let actualUser = SearchBinaryTree.searchNode(users.root, JSON.parse(sessionStorage.actualUser)).value;
+        let queue = actualUser.admin ? JSON.parse(sessionStorage.generalQueue) : actualUser.queue;
+        let generalQueue = JSON.parse(sessionStorage.generalQueue);
+
+        updateTable();
+        updateMessages();
+    </script>
+</body>
+
+</html>
